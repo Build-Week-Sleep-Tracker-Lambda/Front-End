@@ -10,11 +10,11 @@ function Login(props) {
     };
 
     const handleSubmit = e => {
+        e.preventDefault();
         axios
             .post('https://sleepsavy.herokuapp.com/api/auth/login', user)
             .then(response => {
                 console.log(response)
-                e.preventDefault();
                 localStorage.setItem('token', response.data.payload)
                 props.history.push('/')
             })
