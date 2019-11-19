@@ -65,6 +65,7 @@ const SignUp = () =>{
     }
     return(
         <div className='containerSignUp'>
+            <h1>Registration</h1>
             <form  className='customFormSignUp' onSubmit={handleSubmit}>
                 <Label><label>Username
                 
