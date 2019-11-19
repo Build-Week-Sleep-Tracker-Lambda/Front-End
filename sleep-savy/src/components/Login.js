@@ -28,9 +28,9 @@ function Login(props) {
 
     return (
         <div className='container'>
-            <h1>Login</h1>
+            <h1 className='login-header'>Login</h1>
             <form className='customForm' onSubmit={handleSubmit}>
-                <label htmlFor='username'> Username: </label>
+                <label className='label' htmlFor='username'> Username: </label>
                 <input
                     type='text'
                     name='username'
@@ -40,7 +40,7 @@ function Login(props) {
                     required
                 />
 
-                <label htmlFor='password'> Password: </label>
+                <label className='label' htmlFor='password'> Password: </label>
                 <input
                     type='password'
                     name='password'
