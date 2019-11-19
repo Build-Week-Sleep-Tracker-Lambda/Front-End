@@ -36,12 +36,12 @@ form {
   margin: 0 auto;
 }
 
-.container {
+.containerSignUp {
   /* border: 1px solid red; */
   margin-top: 5%;
 }
 
-.customForm {
+.customFormSignUp {
   background-color: rgb(0, 0, 20);
   border-radius: 20px;
   box-shadow: 0px 10px 18px 10px #431070;
@@ -52,32 +52,28 @@ h1 {
   color:  rgb(0, 0, 20);
 }
 
-.navBar {
+.navBarSignUp {
   background-color: rgb(1, 1, 22);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.links {
+.linksSignUp {
   /* border: 1px solid gold; */
   width: 60%;
   display: flex;
   justify-content: space-evenly;
 }
 
-.link {
+.linkSignUp {
  color: white;
  text-decoration: none;
  font-size: 20px;
 }
 
-.link:hover {
+.linkSignUp:hover {
   color: #FFBA08;
-}
-
-label {
-  color: white;
 }
 
 label {
