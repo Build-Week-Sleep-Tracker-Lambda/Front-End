@@ -32,6 +32,7 @@ function Login(props) {
             <form className='customForm' onSubmit={handleSubmit}>
                 <label className='label' htmlFor='username'> Username: </label>
                 <input
+                    className='input'
                     type='text'
                     name='username'
                     placeholder='Username'
@@ -42,6 +43,7 @@ function Login(props) {
 
                 <label className='label' htmlFor='password'> Password: </label>
                 <input
+                    className='input'
                     type='password'
                     name='password'
                     placeholder='Password'
