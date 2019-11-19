@@ -1,10 +1,11 @@
+import SignUp from './components/SignUp'
+import NavBar from './components/NavBar'
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
 import Home from './components/Home';
 import AddForm from './components/AddForm';
 import EditForm from './components/EditForm';
-
 import './App.css';
 
 function App() {
@@ -14,6 +15,8 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <NavBar />
+        <Route exact path="/" render={props => <SignUp {...props} />} />
         <Switch>
           <PrivateRoute path="/sleep" component={Home} />
           <Route path="/add" render={props => <AddForm {...props} />} />
