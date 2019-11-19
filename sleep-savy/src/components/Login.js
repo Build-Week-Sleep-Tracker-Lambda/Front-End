@@ -26,20 +26,23 @@ function Login(props) {
 
     return (
         <div className='container'>
+            <h1>Login</h1>
             <form className='customForm' onSubmit={handleSubmit}>
-                <label htmlFor='username'> Username </label>
+                <label htmlFor='username'> Username: </label>
                 <input
                     type='text'
                     name='username'
+                    placeholder='Username'
                     value={user.username}
                     onChange={handleChange}
                     required
                 />
 
-                <label htmlFor='password'> Password </label>
+                <label htmlFor='password'> Password: </label>
                 <input
                     type='password'
                     name='password'
+                    placeholder='Password'
                     value={user.password}
                     onChange={handleChange}
                     required
