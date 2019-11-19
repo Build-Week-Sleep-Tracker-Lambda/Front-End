@@ -1,3 +1,4 @@
+import Login from './components/Login'
 import SignUp from './components/SignUp'
 import NavBar from './components/NavBar'
 import React, { useState } from 'react';
@@ -16,13 +17,15 @@ function App() {
     <Router>
       <div className="App">
         <NavBar />
-        <Route exact path="/" render={props => <SignUp {...props} />} />
+        <Route exact path="/" render={props => <Login {...props} />} />
+        <Route exact path="/registration" render={props => <SignUp {...props} />} />
         <Switch>
           <PrivateRoute path="/sleep" component={Home} />
           <Route path="/add" render={props => <AddForm {...props} />} />
           <Route path="/edit/:id" render={props => <EditForm {...props} /> } />
           <Route component={Login} />
         </Switch>
+
       </div>
     </Router>
   );

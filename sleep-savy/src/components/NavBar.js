@@ -4,13 +4,13 @@ import logo from '../images/logo.png'
 
 function NavBar() {
     return (
-        <div className='navBarSignUp'>
+        <div className='navBar'>
             <img src={logo} alt='logo' />
-            <div className='linksSignUp'>
-                <Link className='linkSignUp'>Home</Link>
-                <Link className='linkSignUp'>Sleep Entries</Link>
-                <Link className='linkSignUp'>Login</Link>
-                <Link className='linkSignUp'>Registration</Link>
+            <div className='links'>
+                <Link className='link'>Home</Link>
+                <Link className='link'>Sleep Entries</Link>
+                <Link className='link'>Login</Link>
+                <Link className='link'>Registration</Link>
             </div>
         </div>
     )
