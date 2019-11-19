@@ -20,31 +20,3 @@
 .App-link {
   color: #09d3ac;
 }
-
-body {
-  background-color: slateblue;
-}
-
-form {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  background-color: steelblue;
-  padding:2vw;
-  margin:0 auto;
-}
-
-label {
-  color: white;
-  margin:0 auto;
-
-}
-
-.input {
-  margin:0 auto;
-}
-
-button {
-  width:100px;
-  margin:0 auto;
-}
