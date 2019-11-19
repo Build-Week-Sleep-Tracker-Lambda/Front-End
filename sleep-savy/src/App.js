@@ -5,6 +5,7 @@ import PrivateRoute from './components/PrivateRoute';
 // import Registration from './components/Registration';
 import Home from './components/Home';
 import AddForm from './components/AddForm';
+import EditForm from './components/EditForm';
 
 import './App.css';
 
@@ -18,13 +19,14 @@ function App() {
         <nav className="nav">
           {/* <Link className="link" to="/">Login</Link>
           <Link className="link" to="/registration">Registration</Link> */}
-          <Link className="link" to="/home">Home</Link>
+          <Link className="link" to="/sleep">Home</Link>
         </nav>
         <Switch>
           {/* <Route exact path="/" render={props => <Login {...props} />} />
           <Route path="/registration" render={props => <Registration {...props} /> } /> */}
-          <PrivateRoute path="/home" component={Home} />
+          <PrivateRoute path="/sleep" component={Home} />
           <Route path="/add" render={props => <AddForm {...props} />} />
+          <Route path="/edit/:id" render={props => <EditForm {...props} /> } />
           {/* <Route component={Login} /> */}
         </Switch>
       </div>
