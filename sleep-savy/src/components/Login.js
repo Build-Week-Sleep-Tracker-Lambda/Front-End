@@ -10,9 +10,10 @@ function Login(props) {
     };
 
     const handleSubmit = e => {
+        console.log(user)
         e.preventDefault();
         axios
-            .post('https://sleepsavy.herokuapp.com/api/auth/login', user)
+            .post('https://reqres.in/api/users/', user)
             .then(response => {
                 console.log(response)
                 localStorage.setItem('token', response.data.payload)
@@ -24,26 +25,28 @@ function Login(props) {
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <label> Username
-                    <input
-                        type='text'
-                        name='username'
-                        value={user.username}
-                        onChange={handleChange}
-                    />
-                </label>
-                <label> Password
-                    <input
-                        type='password'
-                        name='password'
-                        value={user.password}
-                        onChange={handleChange}
-                    />
-                </label>
+        <div className='container'>
+            <form className='customForm' onSubmit={handleSubmit}>
+                <label htmlFor='username'> Username </label>
+                <input
+                    type='text'
+                    name='username'
+                    value={user.username}
+                    onChange={handleChange}
+                    required
+                />
+
+                <label htmlFor='password'> Password </label>
+                <input
+                    type='password'
+                    name='password'
+                    value={user.password}
+                    onChange={handleChange}
+                    required
+                />
+
+                <button type='submit'>Submit</button>
             </form>
-            <button type='submit'>Submit</button>
         </div>
     )
 }

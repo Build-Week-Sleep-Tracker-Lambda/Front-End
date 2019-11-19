@@ -20,3 +20,41 @@
 .App-link {
   color: #09d3ac;
 }
+
+body {
+  background-color: antiquewhite;
+}
+
+form {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  width: 50%;
+  margin: 0 auto;
+}
+
+input {
+  width: 200px;
+  padding: 5px;
+  margin: 20px 10px;
+}
+
+button {
+  padding: 5px 20px;
+  width: 100px;
+  border-radius: 10px;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: antiquewhite;
+}
+
+.customForm {
+  background-color: grey;
+}
