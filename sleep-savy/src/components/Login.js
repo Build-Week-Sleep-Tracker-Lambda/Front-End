@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios'
+// import { withFormik, Form, Field } from 'formik'
+// import * as Yup from "yup";
 
 
 function Login(props) {
@@ -13,10 +15,10 @@ function Login(props) {
         console.log(user)
         e.preventDefault();
         axios
-            .post('https://reqres.in/api/users/', user)
+            .post('https://sleepsavy.herokuapp.com/api/auth/login', user)
             .then(response => {
                 console.log(response)
-                localStorage.setItem('token', response.data.payload)
+                sessionStorage.setItem('token', response.data.payload)
                 props.history.push('/')
             })
             .catch(error => {
@@ -55,3 +57,52 @@ function Login(props) {
 }
 
 export default Login
+
+// function Login({ errors, touched }) {
+//     return (
+//         <div>
+//             <h1>Login</h1>
+//             <Form className='customForm'>
+//                 {touched.username && errors.username && <p>{errors.username}</p>}
+//                 <Field type="text" name="username" placeholder="Username" />
+//                 {touched.password && errors.password && <p>{errors.password}</p>}
+//                 <Field type="password" name="password" placeholder="Password" />
+//                 <button type='submit'>Submit!</button>
+//             </Form>
+//         </div>
+//     )
+// }
+
+// const FormikLoginForm = withFormik({
+//     mapPropsToValues({ username, password }) {
+//         return {
+//             username: username || "",
+//             password: password || ""
+//         };
+//     },
+
+//     validationSchema: Yup.object().shape({
+//         username: Yup.string()
+//             .required(),
+//         password: Yup.string()
+//             .min(3)
+//             .required()
+//     }),
+
+//     handleSubmit(values, { setStatus, resetForm }) {
+//         console.log(values);
+//         axios
+//             .post('https://sleepsavy.herokuapp.com/api/auth/login', values)
+//             .then(res => {
+//                 setStatus(res.data);
+//                 console.log(res);
+
+//             })
+//             .catch(err => console.log(err.response));
+//         resetForm();
+//     }
+// })(Login);
+
+// export default FormikLoginForm;
+
+
