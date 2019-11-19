@@ -1,20 +1,45 @@
 import React, {useState, useEffect} from 'react';
-import { withFormik, Form, Field } from "formik";
-import * as Yup from "yup";
+// import { withFormik, Form, Field } from "formik";
+// import * as Yup from "yup";
 import axios from "axios";
 import styled from "styled-components"; 
 
 const Input = styled.input`
   font-size: 18px;
   padding: 10px;
-  margin: 10px;
   background: papayawhip;
   border: none;
-  border-radius: 3px;
-  ::placeholder {
-    color: palevioletred;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  background-color: #D9C2ED;
+  width: 40%;
+  margin: 0 auto;
+  border-radius: 5px;
   }
 `;
+
+const Label = styled.label`
+font-size: 20px;
+padding: 30px;
+margin-top:-10px;
+`
+
+const Button = styled.button`
+  cursor: pointer;
+  background: transparent;
+  font-size: 16px;
+  border-radius: 3px;
+  color: #431070;
+  border: 2px solid #431070;
+  margin: 0 1em;
+  padding: 0.25em 1em;
+  transition: 0.5s all ease-out;
+  margin:30px;
+  &:hover {
+    background-color: #8b3ad6;
+    color: white;
+  }`
 
 const SignUp = () =>{
     const [user, setUser] = useState({
@@ -29,7 +54,7 @@ const SignUp = () =>{
     }
     const handleSubmit = e =>{
         e.preventDefault(
-            axios.post("https://reqres.in/api/users/", user)
+            axios.post("https://sleepsavy.herokuapp.com/api/auth/register", user)
             .then(response => { 
                 console.log(response)
             })
@@ -39,15 +64,17 @@ const SignUp = () =>{
         )
     }
     return(
-        <div>
-            <form className="form" onSubmit={handleSubmit}>
-                <label>Username
+        <div className='container'>
+            <form  className='customForm' onSubmit={handleSubmit}>
+                <Label><label>Username
+                
+                </label></Label>
                 <Input className="input" type="text" name="username" value={user.username} onChange={handleChange} required/>
-                </label>
-                <label>Password
+                <Label><label>Password
+                
+                </label></Label>
                 <Input type="password" name="password" value={user.password} onChange={handleChange} required/>
-                </label>
-                <button type="submit">Submit</button>
+                <Button type="submit">Submit</Button>
             </form>
         </div>
     )
