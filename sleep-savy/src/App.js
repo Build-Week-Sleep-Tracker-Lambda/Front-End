@@ -20,7 +20,7 @@ function App() {
         <Route exact path="/" render={props => <Login {...props} />} />
         <Route exact path="/registration" render={props => <SignUp {...props} />} />
         <Switch>
-          <PrivateRoute path="/sleep" component={Home} />
+          <Route path="/sleep" component={Home} />
           <Route path="/add" render={props => <AddForm {...props} />} />
           <Route path="/edit/:id" render={props => <EditForm {...props} />} />
         </Switch>
