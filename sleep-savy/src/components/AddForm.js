@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Emoji from './Emoji';
+import { axiosWithAuth } from './axiosWithAuth';
 
 const AddForm = props => {
 
@@ -19,11 +20,11 @@ const AddForm = props => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        axios
-            .post('https://sleepsavy.herokuapp.com/', entry)
+        axiosWithAuth()
+            .post('https://sleepsavy.herokuapp.com/api/sleep', entry)
             .then(res => {
                 console.log(res.data);
-                props.history.push('/home');
+                props.history.push('/sleep');
             })
             .catch(err => console.log(err.response))
     }

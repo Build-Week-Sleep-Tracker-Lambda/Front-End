@@ -1,12 +1,11 @@
 import axios from 'axios';
-
 export const axiosWithAuth = () => {
-    const token = sessionStorage.getItem('token');
-
+    const token = localStorage.getItem('token');
     return axios.create({
+        baseURL: 'https://sleepsavy.herokuapp.com/api/',
         headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `${token}`,
-        },
-    });
-};
+            Authorization: token
+        }
+    })
+}
+export default axiosWithAuth;
