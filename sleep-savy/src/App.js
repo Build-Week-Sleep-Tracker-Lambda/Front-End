@@ -22,8 +22,7 @@ function App() {
         <Switch>
           <PrivateRoute path="/sleep" component={Home} />
           <Route path="/add" render={props => <AddForm {...props} />} />
-          <Route path="/edit/:id" render={props => <EditForm {...props} /> } />
-          <Route component={Login} />
+          <Route path="/edit/:id" render={props => <EditForm {...props} />} />
         </Switch>
 
       </div>
