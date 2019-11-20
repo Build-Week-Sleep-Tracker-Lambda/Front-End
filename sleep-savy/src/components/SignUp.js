@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 // import { withFormik, Form, Field } from "formik";
 // import * as Yup from "yup";
 import axios from "axios";
-import styled from "styled-components"; 
+import styled from "styled-components";
 
 const Input = styled.input`
   font-size: 18px;
@@ -41,40 +41,40 @@ const Button = styled.button`
     color: white;
   }`
 
-const SignUp = () =>{
+const SignUp = () => {
     const [user, setUser] = useState({
-        username:"",
-        password:""
+        username: "",
+        password: ""
     })
-    const handleChange = e =>{
+    const handleChange = e => {
         setUser({
             ...user,
             [e.target.name]: e.target.value
         })
     }
-    const handleSubmit = e =>{
+    const handleSubmit = e => {
         e.preventDefault(
             axios.post("https://sleepsavy.herokuapp.com/api/auth/register", user)
-            .then(response => { 
-                console.log(response)
-            })
-            .catch(error => {
-                console.log(error.response)
-            })
+                .then(response => {
+                    console.log(response)
+                })
+                .catch(error => {
+                    console.log(error.response)
+                })
         )
     }
-    return(
-        <div className='containerSignUp'>
+    return (
+        <div className='container'>
             <h1>Registration</h1>
-            <form  className='customFormSignUp' onSubmit={handleSubmit}>
+            <form className='customForm' onSubmit={handleSubmit}>
                 <Label><label>Username
-                
+
                 </label></Label>
-                <Input className="input" type="text" name="username" value={user.username} onChange={handleChange} required/>
+                <Input type="text" name="username" value={user.username} onChange={handleChange} required />
                 <Label><label>Password
-                
+
                 </label></Label>
-                <Input type="password" name="password" value={user.password} onChange={handleChange} required/>
+                <Input type="password" name="password" value={user.password} onChange={handleChange} required />
                 <Button type="submit">Submit</Button>
             </form>
         </div>
@@ -88,13 +88,13 @@ export default SignUp
 //         username:"",
 //         password:""
 //     });
-  
+
 //     useEffect(() => {
 //       status && setUsers(users => [...users, status]);
 //     }, [status]);
-  
+
 //     return (
- 
+
 //       <div>
 //         <Form>
 //           <Field type="text" name="username" placeholder="Username" />
@@ -109,8 +109,8 @@ export default SignUp
 
 //     );
 //   }
-  
-  
+
+
 //   const FormikSignUpForm = withFormik({
 //     mapPropsToValues({ name, password }) {
 //       return {
@@ -118,7 +118,7 @@ export default SignUp
 //         password: password || "",
 //       };
 //     },
-  
+
 //     validationSchema: Yup.object().shape({
 //       name: Yup.string()
 //         .min(3)

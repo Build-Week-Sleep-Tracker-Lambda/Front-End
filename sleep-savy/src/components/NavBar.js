@@ -7,10 +7,10 @@ function NavBar() {
         <div className='navBar'>
             <img src={logo} alt='logo' />
             <div className='links'>
-                <Link className='link'>Home</Link>
-                <Link className='link'>Sleep Entries</Link>
-                <Link className='link'>Login</Link>
-                <Link className='link'>Registration</Link>
+                <Link to='#' className='link'>Home</Link>
+                <Link to='/sleep' className='link'>Sleep Entries</Link>
+                <Link to='/' className='link'>Login</Link>
+                <Link to='/registration' className='link'>Registration</Link>
             </div>
         </div>
     )
