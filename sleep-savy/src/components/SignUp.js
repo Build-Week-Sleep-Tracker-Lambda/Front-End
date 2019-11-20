@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 // import * as Yup from "yup";
 import axios from "axios";
 import styled from "styled-components";
+import { axiosWithAuth } from './axiosWithAuth';
 
 const Input = styled.input`
   font-size: 18px;
@@ -41,7 +42,7 @@ const Button = styled.button`
     color: white;
   }`
 
-const SignUp = () => {
+const SignUp = props => {
     const [user, setUser] = useState({
         username: "",
         password: ""
@@ -54,9 +55,10 @@ const SignUp = () => {
     }
     const handleSubmit = e => {
         e.preventDefault(
-            axios.post("https://sleepsavy.herokuapp.com/api/auth/register", user)
+            axiosWithAuth().post("https://sleepsavy.herokuapp.com/api/auth/register", user, {headers: {"Authorization": "token"}})
                 .then(response => {
                     console.log(response)
+                    props.history.push('/')
                 })
                 .catch(error => {
                     console.log(error.response)

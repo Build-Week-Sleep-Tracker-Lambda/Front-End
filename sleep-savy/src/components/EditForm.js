@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import {useParams} from 'react-router-dom';
 import Emoji from './Emoji';
+import { axiosWithAuth } from './axiosWithAuth';
 
 const EditForm = props => {
     let { id } = useParams();
@@ -17,7 +18,7 @@ const EditForm = props => {
         e.preventDefault();
         console.log('update', entry)
 
-        axios
+        axiosWithAuth()
             .put(`https://sleepsavy.herokuapp.com/api/sleep/${entry.id}`, entry)
             .then(res => {
                 console.log(res);

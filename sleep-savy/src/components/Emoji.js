@@ -5,7 +5,7 @@ const Emoji = props => (
         role="img"
         aria-label={props.label ? props.label : ""}
         aria-hidden={props.label ? "false" : "true"}
-        value={props.value}
+        value={parseInt(props.value, 10)}
     >
         {props.symbol}
     </option>

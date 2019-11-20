@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { axiosWithAuth } from './axiosWithAuth';
 
 const Card = styled.div`
     width: 30%;
@@ -15,8 +16,8 @@ const SleepCard = ({ entry, entries, setEntries }) => {
 
     const deleteEntry = id => {
         console.log('id', id)
-        axios
-            .delete(`/delete/${id}`)
+        axiosWithAuth()
+            .delete(`https://sleepsavy.herokuapp.com/api/sleep/${id}`)
             .then(res => {
                 console.log('entry was deleted', res);
 

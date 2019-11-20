@@ -19,7 +19,7 @@ function Home() {
     const [entries, setEntries] = useState([]);
 
     useEffect(() => {
-        axios
+        axiosWithAuth()
             .get('https://sleepsavy.herokuapp.com/api/sleep')
             .then(res => {
                 console.log(res.data);
