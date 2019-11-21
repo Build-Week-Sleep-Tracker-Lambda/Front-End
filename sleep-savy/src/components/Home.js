@@ -1,13 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "./axiosWithAuth";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import SleepCard from "./SleepCard";
-import UserContext from "../context/UserContext";
-
-// first map thru res.data parseInt each wakeTime and bedTime
-// outside of useEffect inside component, make a function that calculates total time in bed...may need to transfer to military time
-//  map thru our parsedInts and calculate differences
 
 const Log = styled.div`
   display: flex;
@@ -22,14 +17,13 @@ const AddButton = styled.button`
 function Home() {
   const [entries, setEntries] = useState([]);
   const [totalTime, setTotalTime] = useState([]);
-  const { userID, setUserID } = useContext(UserContext);
 
   useEffect(() => {
     const id = localStorage.getItem("user");
     axiosWithAuth()
       .get(`https://sleepsavy.herokuapp.com/api/sleep/${id}/user`)
       .then(res => {
-        console.log("res", res.data);
+        // console.log("res", res.data);
         setEntries(res.data);
 
         const parseNum = res.data.map(n => {
@@ -68,15 +62,12 @@ function Home() {
 
             const hoursInBed =
               totalMinutes < 0 ? totalMinutes / 60 + 24 : totalMinutes / 60;
-            // if (minutes < 10) {
-            //     ('0' + minutes).slice(-2)
-            // }
 
-            return `${hoursInBed}:${minutes}`;
+            return `${hoursInBed}:${minutes < 10 ? 0 : ""}${minutes}`;
           }
-
-          setTotalTime(parseNum);
         });
+        console.log(parseNum);
+        setTotalTime(parseNum);
       })
       .catch(err => console.log(err));
   }, []);

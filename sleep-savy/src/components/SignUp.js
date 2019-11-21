@@ -1,9 +1,6 @@
-import React, { useState, useContext } from "react";
-// import { withFormik, Form, Field } from "formik";
-// import * as Yup from "yup";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { axiosWithAuth } from "./axiosWithAuth";
-import UserContext from "../context/UserContext";
 
 const Input = styled.input`
   font-size: 18px;
@@ -49,9 +46,6 @@ const SignUp = props => {
     password: ""
   });
 
-  const [loading, setLoading] = useState(false);
-  const { userID, setUserID } = useContext(UserContext);
-
   const handleChange = e => {
     setUser({
       ...user,
@@ -59,7 +53,6 @@ const SignUp = props => {
     });
   };
   const handleSubmit = e => {
-    setLoading(true);
     e.preventDefault();
     axiosWithAuth()
       .post("https://sleepsavy.herokuapp.com/api/auth/register", user, {
