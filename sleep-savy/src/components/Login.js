@@ -1,64 +1,74 @@
-import React, { useState } from 'react';
-import axios from 'axios'
-import { axiosWithAuth } from './axiosWithAuth';
+import React, { useState, useContext } from "react";
+import { axiosWithAuth } from "./axiosWithAuth";
+import UserContext from "../context/UserContext";
 // import { withFormik, Form, Field } from 'formik'
 // import * as Yup from "yup";
 
-
 function Login(props) {
-    const [user, setUser] = useState({ username: '', password: '' })
+  const [user, setUser] = useState({ username: "", password: "" });
+  const { userID, setUserID } = useContext(UserContext);
 
-    const handleChange = event => {
-        setUser({ ...user, [event.target.name]: event.target.value });
-    };
+  const handleChange = event => {
+    setUser({ ...user, [event.target.name]: event.target.value });
+  };
 
-    const handleSubmit = e => {
-        console.log(user)
-        e.preventDefault();
-        axiosWithAuth()
-            .post('https://sleepsavy.herokuapp.com/api/auth/login', user, {headers: {"Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0Ijo3LCJ1c2VybmFtZSI6ImFkZHkxIiwiaWF0IjoxNTc0MjY5MjUwLCJleHAiOjE1NzQzNTU2NTB9.3-ASkdPl9tjyCFBv7nBXygrt8-O-8Kfph7cx9xuOowI"}})
-            .then(response => {
-                console.log(response)
-                localStorage.setItem('token', response.data.token)
-                props.history.push('/sleep')
-            })
-            .catch(error => {
-                console.log(error.response)
-            })
-    }
+  const handleSubmit = e => {
+    console.log(user);
+    e.preventDefault();
+    axiosWithAuth()
+      .post("https://sleepsavy.herokuapp.com/api/auth/login", user)
+      .then(response => {
+        console.log(response);
+        let userId = response.data.id;
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("user", userId);
+        props.history.push("/sleep");
+      })
+      .catch(error => {
+        console.log(error.response);
+      });
+  };
 
-    return (
-        <div className='container'>
-            <h1 className='login-header'>Login</h1>
-            <form className='customForm' onSubmit={handleSubmit}>
-                <label className='label' htmlFor='username'> Username: </label>
-                <input
-                    className='input'
-                    type='text'
-                    name='username'
-                    placeholder='Username'
-                    value={user.username}
-                    onChange={handleChange}
-                    required
-                />
+  return (
+    <div className="container">
+      <h1 className="login-header">Login</h1>
+      <form className="customForm" onSubmit={handleSubmit}>
+        <label className="label" htmlFor="username">
+          {" "}
+          Username:{" "}
+        </label>
+        <input
+          className="input"
+          type="text"
+          name="username"
+          placeholder="Username"
+          value={user.username}
+          onChange={handleChange}
+          required
+        />
 
-                <label className='label' htmlFor='password'> Password: </label>
-                <input
-                    className='input'
-                    type='password'
-                    name='password'
-                    placeholder='Password'
-                    value={user.password}
-                    onChange={handleChange}
-                    required
-                />
-                <button className='submitButton' type='submit'>Submit</button>
-            </form>
-        </div>
-    )
+        <label className="label" htmlFor="password">
+          {" "}
+          Password:{" "}
+        </label>
+        <input
+          className="input"
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={user.password}
+          onChange={handleChange}
+          required
+        />
+        <button className="submitButton" type="submit">
+          Submit
+        </button>
+      </form>
+    </div>
+  );
 }
 
-export default Login
+export default Login;
 
 // function Login({ errors, touched }) {
 //     return (
@@ -106,5 +116,3 @@ export default Login
 // })(Login);
 
 // export default FormikLoginForm;
-
-

@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext } from "react";
 // import { withFormik, Form, Field } from "formik";
 // import * as Yup from "yup";
-import axios from "axios";
 import styled from "styled-components";
-import { axiosWithAuth } from './axiosWithAuth';
+import { axiosWithAuth } from "./axiosWithAuth";
+import UserContext from "../context/UserContext";
 
 const Input = styled.input`
   font-size: 18px;
@@ -21,10 +21,10 @@ const Input = styled.input`
 `;
 
 const Label = styled.label`
-font-size: 20px;
-padding: 30px;
-margin-top:-10px;
-`
+  font-size: 20px;
+  padding: 30px;
+  margin-top: -10px;
+`;
 
 const Button = styled.button`
   cursor: pointer;
@@ -36,54 +36,74 @@ const Button = styled.button`
   margin: 0 1em;
   padding: 0.25em 1em;
   transition: 0.5s all ease-out;
-  margin:30px;
+  margin: 30px;
   &:hover {
     background-color: #8b3ad6;
     color: white;
-  }`
+  }
+`;
 
 const SignUp = props => {
-    const [user, setUser] = useState({
-        username: "",
-        password: ""
-    })
-    const handleChange = e => {
-        setUser({
-            ...user,
-            [e.target.name]: e.target.value
-        })
-    }
-    const handleSubmit = e => {
-        e.preventDefault(
-            axiosWithAuth().post("https://sleepsavy.herokuapp.com/api/auth/register", user, {headers: {"Authorization": "token"}})
-                .then(response => {
-                    console.log(response)
-                    props.history.push('/')
-                })
-                .catch(error => {
-                    console.log(error.response)
-                })
-        )
-    }
-    return (
-        <div className='container'>
-            <h1>Registration</h1>
-            <form className='customForm' onSubmit={handleSubmit}>
-                <Label><label>Username
+  const [user, setUser] = useState({
+    username: "",
+    password: ""
+  });
 
-                </label></Label>
-                <Input type="text" name="username" value={user.username} onChange={handleChange} required />
-                <Label><label>Password
+  const [loading, setLoading] = useState(false);
+  const { userID, setUserID } = useContext(UserContext);
 
-                </label></Label>
-                <Input type="password" name="password" value={user.password} onChange={handleChange} required />
-                <Button type="submit">Submit</Button>
-            </form>
-        </div>
-    )
-}
+  const handleChange = e => {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value
+    });
+  };
+  const handleSubmit = e => {
+    setLoading(true);
+    e.preventDefault();
+    axiosWithAuth()
+      .post("https://sleepsavy.herokuapp.com/api/auth/register", user, {
+        headers: { Authorization: "token" }
+      })
+      .then(response => {
+        console.log(response);
+        props.history.push("/");
+      })
+      .catch(error => {
+        console.log(error.response);
+      });
+  };
+  return (
+    <div className="container">
+      <h1>Registration</h1>
+      <form className="customForm" onSubmit={handleSubmit}>
+        <Label>
+          <label>Username</label>
+        </Label>
+        <Input
+          type="text"
+          name="username"
+          value={user.username}
+          onChange={handleChange}
+          required
+        />
+        <Label>
+          <label>Password</label>
+        </Label>
+        <Input
+          type="password"
+          name="password"
+          value={user.password}
+          onChange={handleChange}
+          required
+        />
+        <Button type="submit">Submit</Button>
+      </form>
+    </div>
+  );
+};
 
-export default SignUp
+export default SignUp;
 
 // function SignUp({ errors, touched, status }) {
 //     const [users, setUsers] = useState({
@@ -111,7 +131,6 @@ export default SignUp
 
 //     );
 //   }
-
 
 //   const FormikSignUpForm = withFormik({
 //     mapPropsToValues({ name, password }) {
