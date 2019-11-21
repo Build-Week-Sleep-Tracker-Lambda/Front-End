@@ -1,12 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { axiosWithAuth } from "./axiosWithAuth";
-import UserContext from "../context/UserContext";
 // import { withFormik, Form, Field } from 'formik'
 // import * as Yup from "yup";
 
 function Login(props) {
   const [user, setUser] = useState({ username: "", password: "" });
-  const { userID, setUserID } = useContext(UserContext);
 
   const handleChange = event => {
     setUser({ ...user, [event.target.name]: event.target.value });

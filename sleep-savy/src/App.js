@@ -2,7 +2,7 @@ import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import NavBar from "./components/NavBar";
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
 import Home from "./components/Home";
 import AddForm from "./components/AddForm";

@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import Emoji from "./Emoji";
 import { axiosWithAuth } from "./axiosWithAuth";
 
-// in redux hold state tied to database in backend in this state you
-// you want to pull from backend with .get the values tht you are trying to calc
-
 const AddForm = props => {
   const [entry, setEntry] = useState({
     bedTime: "00:00",
