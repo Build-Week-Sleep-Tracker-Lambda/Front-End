@@ -5,11 +5,12 @@ import { axiosWithAuth } from "./axiosWithAuth";
 const Input = styled.input`
   font-size: 18px;
   padding: 10px;
+  background: papayawhip;
   border: none;
   display: flex;
   flex-direction: column;
   align-content: center;
-  background-color: antiquewhite;
+  background-color: #D9C2ED;
   width: 40%;
   margin: 0 auto;
   border-radius: 5px;
@@ -27,15 +28,15 @@ const Button = styled.button`
   background: transparent;
   font-size: 16px;
   border-radius: 3px;
-  color: antiquewhite;
-  border: 2px solid antiquewhite;
+  color: #431070;
+  border: 2px solid #431070;
   margin: 0 1em;
   padding: 0.25em 1em;
   transition: 0.5s all ease-out;
   margin: 30px;
   &:hover {
-    background-color: #ffba08;
-    color: rgb(0, 0, 20);
+    background-color: #8b3ad6;
+    color: white;
   }
 `;
 

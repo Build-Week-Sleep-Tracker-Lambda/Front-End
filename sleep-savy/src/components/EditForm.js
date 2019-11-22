@@ -35,41 +35,42 @@ const EditForm = props => {
 
   return (
     <div className="add-form-container">
-      <h1 className="title">Edit Sleep Entry</h1>
-      <form className="customForm" onSubmit={update}>
-        <label className="label" htmlFor="bedTime">
+      <h1>Edit Workout</h1>
+      <form className="add-form" onSubmit={update}>
+        <label className="time-label">
+          {" "}
           Bed Time:
+          <input
+            className="time-input"
+            type="time"
+            name="bedTime"
+            value={entry.bedTime}
+            onChange={handleChange}
+          />
         </label>
-        <input
-          className="time-input"
-          type="time"
-          name="bedTime"
-          value={entry.bedTime}
-          onChange={handleChange}
-        />
 
-        <label className="label" htmlFor="wakeTime">
+        <label className="time-label">
+          {" "}
           Wake Time:
+          <input
+            className="time-input"
+            type="time"
+            name="wakeTime"
+            value={entry.wakeTime}
+            onChange={handleChange}
+          />
         </label>
-        <input
-          className="time-input"
-          type="time"
-          name="wakeTime"
-          value={entry.wakeTime}
-          onChange={handleChange}
-        />
 
-        <label className="label" htmlFor="mood">
+        <label className="time-label">
           Mood when you wake up:
+          <select className="select-input" name="mood" onChange={handleChange}>
+            <option value="mood not selected">Choose Mood</option>
+            <Emoji symbol="😡" value={1} />
+            <Emoji symbol="😐" value={2} />
+            <Emoji symbol="🙂" value={3} />
+            <Emoji symbol="😍" value={4} />
+          </select>
         </label>
-        <select className="time-input-sel" name="mood" onChange={handleChange}>
-          <option value="mood not selected">Choose Mood</option>
-          <Emoji symbol="😡" value={1} />
-          <Emoji symbol="😐" value={2} />
-          <Emoji symbol="🙂" value={3} />
-          <Emoji symbol="😍" value={4} />
-        </select>
-
         <button type="submit" className="button">
           Submit
         </button>

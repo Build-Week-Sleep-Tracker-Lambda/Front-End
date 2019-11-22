@@ -9,8 +9,6 @@ const Card = styled.div`
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 #35373b;
   margin-top: 5%;
-  background-color: rgb(0, 0, 20);
-  color: white;
 `;
 
 const SleepCard = ({ entry, entries, setEntries, totalTime }) => {
@@ -33,12 +31,10 @@ const SleepCard = ({ entry, entries, setEntries, totalTime }) => {
 
   return (
     <Card id={entry.id}>
-      <div className="btns">
-        <button className="cards-btn" onClick={() => deleteEntry(entry.id)}>
-          Delete
-        </button>
+      <div>
+        <button onClick={() => deleteEntry(entry.id)}>Delete</button>
         <Link to={`/edit/${entry.id}`}>
-          <button className="cards-btn">Edit</button>
+          <button>Edit</button>
         </Link>
       </div>
       <h2>Bed Time : {entry.bedTime}</h2>

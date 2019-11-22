@@ -32,7 +32,8 @@ function Login(props) {
       <h1 className="login-header">Login</h1>
       <form className="customForm" onSubmit={handleSubmit}>
         <label className="label" htmlFor="username">
-          Username:
+          {" "}
+          Username:{" "}
         </label>
         <input
           className="input"
@@ -45,7 +46,8 @@ function Login(props) {
         />
 
         <label className="label" htmlFor="password">
-          Password:
+          {" "}
+          Password:{" "}
         </label>
         <input
           className="input"

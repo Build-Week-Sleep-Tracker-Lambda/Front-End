@@ -12,15 +12,6 @@ const Log = styled.div`
 
 const AddButton = styled.button`
   border: 1px solid grey;
-  border-radius: 5px;
-  background-color: rgb(0, 0, 20);
-  color: white;
-  height: 50px;
-  width: 140px;
-  font-size: 14px;
-  :hover {
-    color: #ffba08;
-  }
 `;
 
 function Home() {
@@ -34,7 +25,6 @@ function Home() {
       .then(res => {
         // console.log("res", res.data);
         setEntries(res.data);
-        console.log("res", res.data);
 
         const parseNum = res.data.map(n => {
           // Bedtime
@@ -85,7 +75,7 @@ function Home() {
   return (
     <div>
       <div>
-        <h1 className="title">Sleep Log</h1>
+        <h1>Sleep Log</h1>
         <Link to="/add">
           <AddButton>Add Sleep Entry</AddButton>
         </Link>
